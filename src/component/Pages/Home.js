@@ -2,7 +2,7 @@ import React from 'react';
 import Tourcards from '../Tourcards';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import SearchAppBar from '../AppBar';
+import PersistentDrawerLeft from '../AppBar';
 import cities from "../../data.json";
 import { Typography } from '@mui/material';
 
@@ -10,7 +10,7 @@ import { Typography } from '@mui/material';
 const Home = () => {
   return (
     <div className="App">
-      <SearchAppBar />
+      <PersistentDrawerLeft>
       <Container sx={{marginY:5}}>
       {
         cities.map((city) => (
@@ -27,6 +27,7 @@ const Home = () => {
       } 
        
       </Container>
+      </PersistentDrawerLeft>
     </div>
   )
 }
