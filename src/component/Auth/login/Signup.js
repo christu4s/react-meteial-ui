@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { useAuth } from '../Auth';
 
 const useStyles = makeStyles((theme) => ({
   buttonContained: {
@@ -20,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 const Signup = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const Auth = useAuth();
+
   const validationSchema = yup.object({
     username: yup.string().required("Username is required"),
     email: yup
@@ -59,8 +62,9 @@ const Signup = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+     
       if(values.username === 'chris') {
-        //auth.login(values.username);
+        Auth.login(values.username);
         document.cookie = "user="+values.username+"; expires=0; path=/";  
         navigate("/");
       }
