@@ -8,17 +8,14 @@ import Signup from './component/Auth/login/Signup';
 import LoginUser from './component/Auth/login/LoginUser';
 
 import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
-import { AuthProvider, useAuth } from './component/Auth/Auth';
+import { AuthProvider } from './component/Auth/Auth';
+import {  useAuth } from './component/Auth/Auth';
+
 import ProtectedRoute from './component/Auth/ProtectedRoute';
+import LogoutPage from './component/Auth/logout';
 
 
-const Logout = () => {
-  const Auth = useAuth();
-  const navigate = useNavigate();
-  Auth.logout(null);
-  navigate('/login');
 
-}
 
 function App() {
   const Auth = useAuth();
@@ -28,7 +25,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/logout" element={<Logout />}></Route>
+      <Route path="/logout" element={<LogoutPage />}></Route>
       <Route path="/signup" element={<Signup />}></Route>
       <Route path="/loginuser" element={<LoginUser />}></Route>
       <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>}></Route>

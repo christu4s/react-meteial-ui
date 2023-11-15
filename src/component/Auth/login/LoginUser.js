@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BasicCard from '../../common/Card';
 import { Grid, Button, TextField } from '@mui/material';
 import CommonTypography from "../../common/CommonTypography";
@@ -26,6 +26,12 @@ const LoginUser = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const Auth = useAuth();
+
+  useEffect(() => {
+    if(Auth.user){
+      navigate('/home');
+    }
+  }, [Auth.user]);
 
   const validationSchema = yup.object({
     username: yup.string().required("Username is required"),

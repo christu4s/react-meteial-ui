@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BasicCard from "../../common/Card";
 import { Grid, Button, TextField } from "@mui/material";
 import CommonTypography from "../../common/CommonTypography";
@@ -7,6 +7,7 @@ import { makeStyles } from "@mui/styles";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useAuth } from '../Auth';
+
 
 const useStyles = makeStyles((theme) => ({
   buttonContained: {
@@ -22,6 +23,12 @@ const Signup = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const Auth = useAuth();
+
+  useEffect(() => {
+    if(Auth.user){
+      navigate('/home');
+    }
+  }, [Auth.user]);
 
   const validationSchema = yup.object({
     username: yup.string().required("Username is required"),

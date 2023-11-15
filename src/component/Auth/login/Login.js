@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import { Button, Card, Grid } from "@mui/material";
 import BasicCard from "../../common/Card";
@@ -6,6 +6,7 @@ import CommonButton from "../../common/CommonButton"
 import CommonTypography from "../../common/CommonTypography"
 import { makeStyles } from "@mui/styles";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Auth";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const Auth = useAuth();
+
+  useEffect(() => {
+    if(Auth.user){
+      navigate('/home');
+    }
+  }, [Auth.user]);
+  
   return (
     <BasicCard>
       <Grid container spacing={2}>
