@@ -9,7 +9,7 @@ import { Typography } from '@mui/material';
 
 const Home = () => {
   return (
-    <div className="App">
+    
       <PersistentDrawerLeft>
       <Container sx={{marginY:5}}>
       {
@@ -28,7 +28,7 @@ const Home = () => {
        
       </Container>
       </PersistentDrawerLeft>
-    </div>
+ 
   )
 }
 

@@ -3,10 +3,12 @@ import React from 'react';
 import ImageCollage from '../common/ImageCollage';
 import SearchAppBar from '../AppBar';
 import CommonAccordion from '../common/CommonAccordion'
+import PersistentDrawerLeft from '../AppBar';
 
 const Aboutus = () => {
   return (
-    <><SearchAppBar />
+    <PersistentDrawerLeft>
+     
     <Container sx={{width:900}}>
         <Typography variant='h3' component="h1" marginTop={3}>
             Explore the world in Optm
@@ -32,7 +34,7 @@ const Aboutus = () => {
     </Box>
    
     </Container>
-    </>
+    </PersistentDrawerLeft>
   )
 }
 

@@ -20,7 +20,7 @@ import LogoutPage from './component/Auth/logout';
 function App() {
   const Auth = useAuth();
   return (
-    <>
+    <div className="App">
     <AuthProvider>
     <BrowserRouter>
     <Routes>
@@ -36,7 +36,7 @@ function App() {
     </Routes>
     </BrowserRouter>
     </AuthProvider>
-    </>
+    </div>
    
   );
 }
