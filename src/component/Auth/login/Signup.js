@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BasicCard from "../../common/Card";
 import { Grid, Button, TextField } from "@mui/material";
 import CommonTypography from "../../common/CommonTypography";
@@ -7,7 +7,7 @@ import { makeStyles } from "@mui/styles";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useAuth } from '../Auth';
-
+import CommonBackdrop from "../../common/CommonBackdrop";
 
 const useStyles = makeStyles((theme) => ({
   buttonContained: {
@@ -23,6 +23,7 @@ const Signup = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const Auth = useAuth();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if(Auth.user){
@@ -71,9 +72,12 @@ const Signup = () => {
     onSubmit: (values) => {
      
       if(values.username === 'chris') {
-        Auth.login(values.username);
-        document.cookie = "user="+values.username+"; expires=0; path=/";  
-        navigate("/");
+        setOpen(true);
+        setTimeout(() => {
+          Auth.login(values.username);
+          document.cookie = "user="+values.username+"; expires=0; path=/";  
+          navigate("/");
+      }, 1000);
       }
       
     },
@@ -189,6 +193,7 @@ const Signup = () => {
           </Grid>
         </Grid>
       </form>
+      <CommonBackdrop open={open}/>
     </BasicCard>
   );
 };

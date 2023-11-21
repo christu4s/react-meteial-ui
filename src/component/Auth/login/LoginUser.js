@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import BasicCard from '../../common/Card';
 import { Grid, Button, TextField } from '@mui/material';
 import CommonTypography from "../../common/CommonTypography";
@@ -7,7 +7,7 @@ import { makeStyles } from "@mui/styles";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { useAuth } from '../Auth';
-
+import CommonBackdrop from '../../common/CommonBackdrop';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +26,7 @@ const LoginUser = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const Auth = useAuth();
+  const [open,setOpen] = useState(false);
 
   useEffect(() => {
     if(Auth.user){
@@ -51,6 +52,8 @@ const LoginUser = () => {
       )
   });
 
+  
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -59,9 +62,13 @@ const LoginUser = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       if(values.username === 'chris') {
-        document.cookie = "user="+values.username+"; expires=0; path=/";  
-        Auth.login(values.username);
-        navigate("/");
+        setOpen(true);
+        setTimeout(() => {
+          document.cookie = "user="+values.username+"; expires=0; path=/";  
+          Auth.login(values.username);
+          navigate("/");
+      }, 1000);
+       
       }
     },
   });
@@ -117,6 +124,7 @@ const LoginUser = () => {
         </Grid>
       </Grid>
       </form>
+      <CommonBackdrop open={open}/>
     </BasicCard>
   )
 }
