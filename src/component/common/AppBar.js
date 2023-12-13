@@ -260,7 +260,7 @@ export default function PersistentDrawerLeft({children}) {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Contact', 'About', 'FAQ', 'Logout'].map((text, index) => (
+          {['Home', 'Contact', 'About', 'FAQ','Logics', 'Logout'].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton  key={text}
                 onClick={(event) => { navigate('/'+text.toLowerCase())}}

@@ -24,7 +24,7 @@ export const AuthProvider = ({children}) => {
   useEffect(()=>{
     var user = getCookie("user");
     setUser(user);
-    
+   
   },[JSON.stringify(user)]);
 
   const login = (user) => {

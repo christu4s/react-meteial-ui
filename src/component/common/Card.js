@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import makeStyles from "@mui/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
-  cardContainerContainer: {
+  cardContainer: {
     border: "1px solid #D0D5DD !important",
   },
   boxContainer : {

@@ -6,10 +6,11 @@ import Contact from './component/Pages/Contact';
 import Login from './component/Auth/login/Login';
 import Signup from './component/Auth/login/Signup';
 import LoginUser from './component/Auth/login/LoginUser';
+import Logics from './component/Pages/Logics';
 
 import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
-import { AuthProvider } from './component/Auth/Auth';
-import {  useAuth } from './component/Auth/Auth';
+import { AuthProvider, useAuth } from './component/Auth/Auth';
+
 
 import ProtectedRoute from './component/Auth/ProtectedRoute';
 import LogoutPage from './component/Auth/logout';
@@ -33,6 +34,7 @@ function App() {
       <Route path="/:id" element={<ProtectedRoute><Tour /></ProtectedRoute>}></Route>
       <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>}></Route>
       <Route path="/aboutus" element={<ProtectedRoute><Aboutus /></ProtectedRoute>}></Route>
+      <Route path="/logics" element={<ProtectedRoute><Logics /></ProtectedRoute>}></Route>
     </Routes>
     </BrowserRouter>
     </AuthProvider>
